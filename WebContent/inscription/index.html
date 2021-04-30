@@ -1,0 +1,151 @@
+<html>
+    <head>
+    <link href="css/ajt.css" rel="stylesheet" media="all">
+    <title>Nouvelle inscription</title>
+    <link rel="icon" href="../images/logo.png" />
+    </head>
+    <body>
+        <div class="hassan" style="position: sticky;">
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Nouvelle inscription</h2>
+                </div>
+                <div class="page">
+                <div class="card-body">
+                    <form method="POST" action="../Inscription">
+                        <div class="form-row m-b-55">
+                            <div class="name">Nom et Prenom</div>
+                            <div class="value">
+                                <div class="row row-space">
+                                    <div class="col-2">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="text" name="prenom" placeholder="Prenom" required>
+                                            <label class="label--desc">Prenom</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="text" name="nom" placeholder="Nom" required>
+                                            <label class="label--desc">nom</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Date naissance</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="date" name="dateNai" placeholder="Date naissance" style="height:55px;" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Code Massar</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" name="cne" placeholder="Code Massar" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Code identite nationnal</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" name="cin" placeholder="Code identite nationnal" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Adresse</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" name="adresse" placeholder="Adresse" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">E-mail</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="email" name="email" placeholder="E-mail" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">N° Telephone</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" name="telephone" placeholder="Numero de telephone" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Mot de passe</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="password" name="pass" placeholder="Numero de telephone" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Annee Baccalaureat</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" name="anneeBac" placeholder="Annee de baccalaureat" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Option de Baccalaureat</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" name="optionBac" placeholder="Option de Baccalaureat" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Mentien</div>
+                            <div class="value">
+                                <div class="input-group">
+                                <select class="kwa" name="mentien">
+                                    <option value="passable">PASSABLE</option>
+                                    <option value="assez bien">ASSEZ BIEN</option>
+                                    <option value="bien">BIEN</option>
+                                    <option value="tres bien">TRES BIEN</option>
+                   
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Photo</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="file" name="photo" placeholder="Option de Baccalaureat" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Filiere</div>
+                            <div class="value">
+                                <div class="input-group">
+                                <select class="kwa" name="filiere">
+                                    <option value="1">GÉNIE INFORMATIQUE</option>
+                                    <option value="4">TECHNIQUES DE MANAGEMENT</option>
+                                    <option value="7">TECHNIQUES INSTRUMENTALES & MANAGEMENT DE LA QUALITÉ</option>
+                                    <option value="10">GÉNIE INDUSTRIEL & MAINTENANCE</option>
+                   
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn--radius-2 btn--red" type="submit">Inscrivez-vous</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+          </div>  
+    </body>
+</html>
