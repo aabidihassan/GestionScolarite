@@ -12,9 +12,13 @@ import com.Beans.Absence;
 import com.Beans.Annance;
 import com.Beans.Demande;
 import com.Beans.Etudiant;
+import com.Beans.Filiere;
+import com.Beans.Login;
 import com.Beans.Matiere;
 import com.Beans.Module;
+import com.Beans.Niveau;
 import com.Beans.Reclamation;
+import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 
 public class GestionAdmin {
 	private EntityManagerFactory emf;
@@ -85,6 +89,46 @@ public class GestionAdmin {
 		et.begin();
 		Demande d = em.find(Demande.class, id);
 		em.remove(d);
+		et.commit();
+	}
+	public String classe(int idFiliere, int idNiveau) {
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		Filiere filiere = em.find(Filiere.class, idFiliere);
+		Niveau niv = em.find(Niveau.class, idNiveau);
+		et.commit();
+		return (niv.getNomNiveau()+" "+filiere.getNomFiliere());
+	}
+	public void deleteEtudiant(int id) {
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		Etudiant etud = em.find(Etudiant.class, id);
+		Query query = em.createQuery("SELECT l from Login l WHERE l.cne='"+etud.getCne()+"'") ;
+		Login log = (Login) query.getResultList().get(0);
+		em.remove(log);
+		em.remove(etud);
+		et.commit();
+	}
+	public Etudiant getEtudiant(int id) {
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		Etudiant etud = em.find(Etudiant.class, id);
+		et.commit();
+		return etud;
+	}
+	public Login getLogin(String cne) {
+		Query query = em.createQuery("SELECT l from Login l WHERE l.cne='"+cne+"'") ;
+		return ((Login)query.getResultList().get(0));
+	}
+	public void modifyEtud(Etudiant etud, Login log) {
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		Etudiant e = em.find(Etudiant.class, etud.getIdEtudiant());
+		em.remove(e);
+		Login l = em.find(Login.class, log.getIdLogin());
+		em.remove(l);
+		em.persist(etud);
+		em.persist(log);
 		et.commit();
 	}
 }

@@ -1,3 +1,5 @@
+<%@page import="com.metier.GestionAdmin"%>
+<%@page import="java.util.List"%>
 <%@page import="com.Beans.Etudiant"%>
 <%@page import="com.metier.GestionCompte"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -51,21 +53,18 @@
 <body>
 
 <jsp:include page="menu.jsp"></jsp:include>
+
+
+
+<% if(session.getAttribute("etudiants")==null){ %>
 <center>
-<h1 style="margin-top:1%;">Ajouter une annance</h1>
+<h1 style="margin-top:1%;">Choisir une classe</h1>
 </center>
 <center style="margin-top:4%;">
 
 <form action="../Admin" method="POST">
-<table align="center" style="width: 80%; height:450px; border: 4px solid black;">
+<table align="center" style="width: 80%; height:300px; border: 4px solid black;">
 
-<tr>
-<td class="cls">
-Texte d'annance:
-</td><td>
-<input  class="input" type="text" name="texte" style="height: 90px;">
-</td>
-</tr>
 
 <tr>
 <td class="cls">
@@ -94,12 +93,52 @@ Choisir le niveau:
 
 <tr>
 <td colspan="2">
-	<input class="btn btn-primary" type="submit" name="annance" value="Enregistrer l'annance" >
+	<input class="btn btn-primary" type="submit" name="search" value="Chercher" >
 	</td>
 	</tr>
 </table>
 </form>
 </center>
+<%} else if(session.getAttribute("etudiants")!=null){
+	GestionAdmin ga = new GestionAdmin();
+List<Etudiant> lst = (List<Etudiant>)session.getAttribute("etudiants");
+session.removeAttribute("etudiants");
+%>
+<center>
+<h1 style="margin-top:1%;">Liste des etudiants</h1>
+<h5>Classe : <%= ga.classe(lst.get(0).getIdFiliere(), lst.get(0).getIdClasse()) %></h5>
+</center>
+<center style="margin-top:4%;">
+
+<table align="center" style="width: 80%; border: 4px solid black;">
+
+<thead>
+	<th>Nom et Prenom</th><th>Code Massar</th><th>CIN</th><th>Actions</th>
+	
+</thead>
+
+<tbody>
+<% for(Etudiant etud : lst){ %>
+
+<tr>
+<td><%= etud.getNom() %> <%= etud.getPrenom() %></td>
+<td><%= etud.getCne() %></td>
+<td><%= etud.getCin() %></td>
+<td>
+	<form action="../Admin" method="POST">
+		<input type="text" name="id" value="<%= etud.getIdEtudiant() %>" hidden="true">
+		<input class="btn btn-primary" style=" width: 40%;" type="submit" name="modifEtud" value="Modifier">
+		<input class="btn btn-primary" style="background-color: red; width: 40%;" name="deleteEtud" type="submit" value="Supprimer">
+	</form>
+</td>
+</tr>
+
+<%} %>
+</tbody>
+
+</table>
+</center>
+<%} %>
 </body>
 
 </html>

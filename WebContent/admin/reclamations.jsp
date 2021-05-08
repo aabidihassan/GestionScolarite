@@ -51,13 +51,14 @@ table {
 
 <table style="width: 90%;">
     <thead>
-    <tr><th>Texte de reclamation</th><th>Date reclamation</th></tr>
+    <tr><th>Texte de reclamation</th><th>Date reclamation</th><th>Etudiant</th></tr>
     </thead>
     <tbody>
     <% for(Reclamation rc : lst){ %>
     	<tr>
     	<td><%= rc.getText() %></td>
     	<td><%= rc.getDateReclamation() %></td>
+    	<td><%= ga.nomEtudiant(rc.getIdEtudiant()) %></td>
     	</tr>
     <% } %>
     </tbody>

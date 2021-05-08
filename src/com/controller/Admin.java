@@ -121,6 +121,53 @@ public class Admin extends HttpServlet {
 			ga.deleteDemande(Integer.parseInt(request.getParameter("id")));
 			response.sendRedirect("admin/demandes.jsp");
 		}
+		
+		else if(request.getParameter("search")!=null) {
+			List<Etudiant> lst = ga.etudiants(Integer.parseInt(request.getParameter("filiere")), Integer.parseInt(request.getParameter("niveau")));
+			session.setAttribute("etudiants", lst);
+			response.sendRedirect("admin/etudiants.jsp");
+		}
+		
+		else if(request.getParameter("deleteEtud")!=null) {
+			ga.deleteEtudiant(Integer.parseInt(request.getParameter("id")));
+			response.sendRedirect("admin/etudiants.jsp");
+		}
+		
+		else if(request.getParameter("modifEtud")!=null) {
+			int id = Integer.parseInt(request.getParameter("id"));
+			Etudiant etud = ga.getEtudiant(id);
+			session.setAttribute("etudiant", etud);
+			session.setAttribute("login", ga.getLogin(etud.getCne()));
+			
+			response.sendRedirect("admin/modifier.jsp");
+		}
+		
+		else if(request.getParameter("modify")!=null) {
+			int idEtud = Integer.parseInt(request.getParameter("idEtud"));
+			int idLog = Integer.parseInt(request.getParameter("idLog"));
+			String nom = request.getParameter("nom");
+			String prenom = request.getParameter("prenom");
+			String cne = request.getParameter("cne");
+			String cin = request.getParameter("cin");
+			String email = request.getParameter("email");
+			String telephone = request.getParameter("telephone");
+			String anneeBac = request.getParameter("anneeBac");
+			String photo = null;
+			String adresse = request.getParameter("adresse");
+			String dateNai = request.getParameter("dateNai");
+			String optionBac = request.getParameter("optionBac");
+			String mention = request.getParameter("mentien");
+			int idClasse = Integer.parseInt(request.getParameter("niveau"));
+			int idFiliere = Integer.parseInt(request.getParameter("filiere"));
+			Etudiant etudiant = new Etudiant( nom,  prenom,  cne,  cin,  email,  telephone,
+					 anneeBac,  photo,  adresse,  dateNai,  optionBac,  mention, idFiliere,
+					 idClasse);
+			etudiant.setIdEtudiant(idEtud);
+			Login login = new Login(cne, request.getParameter("pass"));
+			login.setIdLogin(idLog);
+			ga.modifyEtud(etudiant, login);
+			response.sendRedirect("admin/etudiants.jsp");
+		}
 	}
 
 }

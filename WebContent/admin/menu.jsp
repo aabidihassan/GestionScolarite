@@ -10,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Compte utilisateur</title>
+  <title>Compte administrateur</title>
 
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -53,6 +53,7 @@
         <a href="annance.jsp" class="list-group-item list-group-item-action bg-light">Ajouter une annance</a>
         <a href="absence.jsp" class="list-group-item list-group-item-action bg-light">Marquer une absece</a>
         <a href="absences.jsp" class="list-group-item list-group-item-action bg-light">Liste des absences</a>
+        <a href="etudiants.jsp" class="list-group-item list-group-item-action bg-light">Liste des etudiants</a>
         <a href="../Account" class="list-group-item list-group-item-action bg-light">Deconnexion</a>
       </div>
       </div>
