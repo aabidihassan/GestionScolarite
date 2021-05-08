@@ -6,12 +6,15 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import javax.websocket.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.Beans.Demande;
 import com.Beans.Etudiant;
 import com.Beans.Login;
+import com.Beans.Reclamation;
 import com.metier.GestionCompte;
 
 /**
@@ -57,6 +60,7 @@ public class Account extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		GestionCompte gc = new GestionCompte();
 		HttpSession session = request.getSession();
+		
 		if(request.getParameter("log")!=null) {
 			Login login = new Login(request.getParameter("login"), request.getParameter("pass"));
 			
@@ -69,6 +73,45 @@ public class Account extends HttpServlet {
 			else {
 				response.sendRedirect("compte");
 			}
+		}
+		
+		else if(request.getParameter("sup")!=null) {
+			gc.deleteDemande(Integer.parseInt(request.getParameter("idDemande")));
+			response.sendRedirect("compte/demandes.jsp");
+		}
+		
+		else if(request.getParameter("mod")!=null) {
+			session.setAttribute("demande", gc.getDemande(Integer.parseInt(request.getParameter("idDemande"))));
+			response.sendRedirect("compte/modifier.jsp");
+		}
+		
+		else if(request.getParameter("modifier")!=null) {
+			Demande dm = (Demande)session.getAttribute("demande");
+			Demande demande = new Demande(dm.getIdEtudiant(),Integer.parseInt(request.getParameter("type")),
+					request.getParameter("description"), dm.getDateDemande());
+			demande.setIdDemande(dm.getIdDemande());
+			gc.modifyDemande(demande);
+			session.removeAttribute("demande");
+			response.sendRedirect("compte/demandes.jsp");
+		}
+		
+		else if(request.getParameter("supRec")!=null) {
+			gc.deleteReclamation(Integer.parseInt(request.getParameter("idReclamation")));
+			response.sendRedirect("compte/reclamations.jsp");
+		}
+		
+		else if(request.getParameter("modRec")!=null) {
+			session.setAttribute("reclamation", gc.getReclamation(Integer.parseInt(request.getParameter("idReclamation"))));
+			response.sendRedirect("compte/modifier.jsp");;
+		}
+		
+		else if(request.getParameter("modifierRec")!=null) {
+			Reclamation recl = (Reclamation)session.getAttribute("reclamation");
+			Reclamation rc = new Reclamation(recl.getIdEtudiant(), request.getParameter("texte"), recl.getIdReclamation());
+					
+			gc.modifyReclamation(rc);
+			session.removeAttribute("reclamation");
+			response.sendRedirect("compte/reclamations.jsp");
 		}
 	}
 

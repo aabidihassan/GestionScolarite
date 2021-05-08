@@ -22,8 +22,15 @@ public class Etudiant {
 	private String optionBac;
 	private String mention;
 	private int idClasse;
+	private int idFiliere;
+	public int getIdFiliere() {
+		return idFiliere;
+	}
+	public void setIdFiliere(int idFiliere) {
+		this.idFiliere = idFiliere;
+	}
 	public Etudiant(String nom, String prenom, String cne, String cin, String email, String telephone,
-			String anneeBac, String photo, String adresse, String dateNai, String optionBac, String mention,
+			String anneeBac, String photo, String adresse, String dateNai, String optionBac, String mention, int idFiliere,
 			int idClasse) {
 		this.idEtudiant = 0;
 		this.nom = nom;
@@ -39,6 +46,25 @@ public class Etudiant {
 		this.optionBac = optionBac;
 		this.mention = mention;
 		this.idClasse = idClasse;
+		this.idFiliere = idFiliere;
+	}
+	public Etudiant(String nom, String prenom, String cne, String cin, String email, String telephone,
+			String anneeBac, String adresse, String dateNai, String optionBac, String mention, int idFiliere,
+			int idClasse) {
+		this.idEtudiant = 0;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.cne = cne;
+		this.cin = cin;
+		this.email = email;
+		this.telephone = telephone;
+		this.anneeBac = anneeBac;
+		this.adresse = adresse;
+		this.dateNai = dateNai;
+		this.optionBac = optionBac;
+		this.mention = mention;
+		this.idClasse = idClasse;
+		this.idFiliere = idFiliere;
 	}
 	public int getIdClasse() {
 		return idClasse;

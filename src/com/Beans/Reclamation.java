@@ -1,5 +1,8 @@
 package com.Beans;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -15,6 +18,19 @@ public class Reclamation {
 	public Reclamation() {
 		
 	}
+	public Reclamation(int idEtudiant, String text, int idReclamation) {
+		this.idEtudiant = idEtudiant;
+		this.text = text;
+		this.idReclamation = idReclamation;
+	}
+	public Reclamation(String text, int idEtudiant) {
+		super();
+		this.idReclamation = 0;
+		this.text = text;
+		this.idEtudiant = idEtudiant;
+		this.dateReclamation = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+	}
+
 	public int getIdReclamation() {
 		return idReclamation;
 	}

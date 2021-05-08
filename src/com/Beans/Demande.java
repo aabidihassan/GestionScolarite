@@ -11,18 +11,18 @@ public class Demande {
 	private int idDemande;
 	private int idEtudiant;
 	private int idType;
-	private String date;
+	private String dateDemande;
 	private String description;
-	private int idEtat;
+	private String etat;
 	public Demande() {
 		
 	}
-	public Demande(int idEtudiant, int idType, String description, String date) {
-		this.date = date;
+	public Demande(int idEtudiant, int idType, String description, String dateDemande) {
+		this.dateDemande = dateDemande;
 		this.description = description;
 		this.idType = idType;
 		this.idDemande = 0;
-		this.idEtat = 1;
+		this.etat = "En attent";
 		this.idEtudiant = idEtudiant;
 	}
 	public int getIdDemande() {
@@ -43,11 +43,11 @@ public class Demande {
 	public void setIdType(int idType) {
 		this.idType = idType;
 	}
-	public String getDate() {
-		return date;
+	public String getDateDemande() {
+		return dateDemande;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setDateDemande(String dateDemande) {
+		this.dateDemande = dateDemande;
 	}
 	public String getDescription() {
 		return description;
@@ -55,10 +55,10 @@ public class Demande {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getIdEtat() {
-		return idEtat;
+	public String getEtat() {
+		return etat;
 	}
-	public void setIdEtat(int idEtat) {
-		this.idEtat = idEtat;
+	public void setEtat(String etat) {
+		this.etat = etat;
 	}
 }

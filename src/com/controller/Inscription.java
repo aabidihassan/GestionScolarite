@@ -55,7 +55,7 @@ public class Inscription extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		GestionInscription gi = new GestionInscription();
 		HttpSession session = request.getSession();
-		if(gi.already(request.getParameter("cne"))) {
+		if(gi.already(request.getParameter("cne"),request.getParameter("cin"))) {
 			response.sendRedirect("inscription");
 		}
 		else {
@@ -71,9 +71,10 @@ public class Inscription extends HttpServlet {
 			String dateNai = request.getParameter("dateNai");
 			String optionBac = request.getParameter("optionBac");
 			String mention = request.getParameter("mentien");
-			int idClasse = Integer.parseInt(request.getParameter("filiere"));
+			int idClasse = Integer.parseInt(request.getParameter("idClasse"));
+			int idFiliere = Integer.parseInt(request.getParameter("filiere"));
 			Etudiant etudiant = new Etudiant( nom,  prenom,  cne,  cin,  email,  telephone,
-					 anneeBac,  photo,  adresse,  dateNai,  optionBac,  mention,
+					 anneeBac,  photo,  adresse,  dateNai,  optionBac,  mention, idFiliere,
 					 idClasse);
 			Login login = new Login(cne, request.getParameter("pass"));
 			gi.insert(etudiant, login);

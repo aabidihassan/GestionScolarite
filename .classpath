@@ -29,5 +29,7 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/stax-ex-1.8.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/txw2-2.3.1.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Java/apache-tomcat-9.0.43/lib/mysql-connector-java-5.1.48-bin.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/itextpdf-5.5.9.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/apache-tomcat-9.0.43/lib/itextpdf-5.5.9.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
