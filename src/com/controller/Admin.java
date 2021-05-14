@@ -168,6 +168,22 @@ public class Admin extends HttpServlet {
 			ga.modifyEtud(etudiant, login);
 			response.sendRedirect("admin/etudiants.jsp");
 		}
+		
+		else if(request.getParameter("absStep1")!=null) {
+			List<Etudiant> lst = ga.etudiants(Integer.parseInt(request.getParameter("filiere")), Integer.parseInt(request.getParameter("niveau")));
+			session.setAttribute("etudiants", lst);
+			List<Module> list = ga.modules(Integer.parseInt(request.getParameter("filiere")), Integer.parseInt(request.getParameter("niveau")));
+			session.setAttribute("modules", list);
+			session.setAttribute("step", "step1");
+			response.sendRedirect("admin/absences.jsp");
+		}
+		
+		else if(request.getParameter("absStep2")!=null) {
+			ArrayList<Absence> lst = ga.absence(Integer.parseInt(request.getParameter("etudiant")), Integer.parseInt(request.getParameter("module")));
+			session.setAttribute("absences", lst);
+			session.setAttribute("step", "step2");
+			response.sendRedirect("admin/absences.jsp");
+		}
 	}
 
 }

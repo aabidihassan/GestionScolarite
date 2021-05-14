@@ -153,7 +153,7 @@
                             </div>
                         </div>
                          <div class="form-row">
-                            <div class="name">Niveau</div>
+                            <div class="name" style="display:none;">Niveau</div>
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="text" value="2" name="idClasse" placeholder="Option de Baccalaureat" hidden>
@@ -161,7 +161,7 @@
                             </div>
                         </div>
                         <div>
-                            <button name="change" class="btn btn--radius-2 btn--red" type="submit">Valider les informations</button>
+                            <button name="change" class="btn btn--radius-2 btn--red" type="submit" style="margin-top:-5%;">Valider les informations</button>
                         </div>
                     </form>
                 </div>

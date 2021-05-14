@@ -53,12 +53,13 @@
 <body>
 
 <jsp:include page="menu.jsp"></jsp:include>
-<center>
-<h1 style="margin-top:1%;">Modifier la demande</h1>
-</center>
+
 <% if(session.getAttribute("demande")!=null){ 
  Demande dm = (Demande)session.getAttribute("demande");
 %>
+<center>
+<h1 style="margin-top:1%;">Modifier la demande</h1>
+</center>
 <center style="margin-top:4%;">
 
 <form action="../Account" method="POST">
@@ -102,6 +103,9 @@ Description:
 <%} else if(session.getAttribute("reclamation")!=null){ 
  Reclamation recl = (Reclamation)session.getAttribute("reclamation");
 %>
+<center>
+<h1 style="margin-top:1%;">Modifier la reclamation</h1>
+</center>
 <center style="margin-top:4%;">
 
 <form action="../Account" method="POST">

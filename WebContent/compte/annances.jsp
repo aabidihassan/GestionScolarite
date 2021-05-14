@@ -50,7 +50,7 @@ table {
 
 <jsp:include page="menu.jsp"></jsp:include>
 <center>
-<h1 style="margin-top:1%;">Liste des demandes</h1>
+<h1 style="margin-top:1%;">Liste des annances</h1>
 
 
 

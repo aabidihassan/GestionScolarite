@@ -1,5 +1,6 @@
 package com.metier;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -130,5 +131,17 @@ public class GestionAdmin {
 		em.persist(etud);
 		em.persist(log);
 		et.commit();
+	}
+	public ArrayList<Absence> absence(int idModule, int idEtudiant){
+		ArrayList<Absence> lst = new ArrayList<Absence>();
+		List<Matiere> matieres = this.matieres(idModule);
+		for(Matiere m : matieres) {
+			Query query = em.createQuery("SELECT a from Absence a WHERE a.idMatiere='"+m.getIdMatiere()+"' AND a.idEtudiant='"+idEtudiant+"'");
+			List<Absence> l = query.getResultList();
+			for(Absence abs : l) {
+				lst.add(abs);
+			}
+		}
+		return lst;
 	}
 }
